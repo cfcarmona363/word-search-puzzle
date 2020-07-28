@@ -28,7 +28,6 @@ export const PageContainer = styled.div`
   width: 90%;
 `
 export const GridContainer = styled.div`
-  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-gap: 1rem;

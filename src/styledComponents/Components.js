@@ -18,6 +18,5 @@ export const Text = styled.span`
 `
 export const StrongText = styled(Text)`
   font-size: 22px;
-  text-decoration: underline;
   font-weight: 800;
 `
