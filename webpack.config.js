@@ -15,7 +15,7 @@ module.exports = function (_env, argv) {
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'assets/js/[name].[contenthash:8].js',
+      filename: 'assets/js/[name].[hash:8].js',
       publicPath: '/'
     },
     module: {
@@ -37,7 +37,7 @@ module.exports = function (_env, argv) {
           use: ['style-loader', 'css-loader', 'sass-loader']
         },
         {
-          test: /\.(png|jpg|gif)$/i,
+          test: /\.(png|jpg|gif|jpeg|pdf)$/i,
           use: {
             loader: 'url-loader',
             options: {
@@ -56,6 +56,10 @@ module.exports = function (_env, argv) {
           options: {
             name: 'static/media/[name].[hash:8].[ext]'
           }
+        },
+        {
+          test: /\.ico$/,
+          loader: 'file-loader?name=[name].[ext]'
         }
       ]
     },
@@ -65,8 +69,8 @@ module.exports = function (_env, argv) {
     plugins: [
       isProduction &&
         new MiniCssExtractPlugin({
-          filename: 'assets/css/[name].[contenthash:8].css',
-          chunkFilename: 'assets/css/[name].[contenthash:8].chunk.css'
+          filename: 'assets/css/[name].[hash:8].css',
+          chunkFilename: 'assets/css/[name].[hash:8].chunk.css'
         }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'public/index.html'),
@@ -119,9 +123,11 @@ module.exports = function (_env, argv) {
       runtimeChunk: 'single'
     },
     devServer: {
+      port: 3000,
       compress: true,
+      inline: true,
+      hot: true,
       historyApiFallback: true,
-      open: true,
       overlay: true
     }
   }
