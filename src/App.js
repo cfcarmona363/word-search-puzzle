@@ -1,12 +1,12 @@
 import React from 'react'
-import Router from './Router'
 import favicon from '../public/favicon.ico'
 import { MainContainer } from './styledComponents/StyledContainers'
+import Home from './pages/Home'
 
 const App = () => {
   return (
     <MainContainer>
-      <Router />
+      <Home />
     </MainContainer>
   )
 }
